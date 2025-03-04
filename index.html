@@ -24,7 +24,219 @@
 
   <main>
 
-    <!-- TODO put houses container here! -->
+    <!-- SECTION Jobs Container Starts Here  -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="my-3">Jobs</h>
+        </div>
+      </div>
+      <div class="row align-items-center mb-4">
+        <div class="col-md-7">
+          <div id="jobFormPlaceholder">
+            <p class="fs-1">Please log in to create a job listing</p>
+          </div>
+          <div id="jobForm" class="bg-light shadow rounded p-3 d-none">
+
+            <form onsubmit="app.jobController.createJobListing()">
+              <div class="mb-3">
+                <label for="company">Company</label>
+                <input id="company" name="company" type="text" required min="1" max="30"
+                  placeholder="Company Name Here...">
+              </div>
+              <div class="mb-3">
+                <label for="jobTitle">Job Title</label>
+                <input id="jobTitle" name="jobTitle" type="text" required min="1" max="30"
+                  placeholder="Job Title Here...">
+              </div>
+              <div class="mb-3">
+                <label for="hours">Hours</label>
+                <input id="hours" name="hours" type="number" required min="1" max="24" placeholder="0">
+              </div>
+              <div class="mb-3">
+                <label for="rate">Rate</label>
+                <input id="rate" name="rate" type="number" required min="1" max="1000000" placeholder="$0.00">
+              </div>
+              <div class="mb-3">
+                <label for="jobDescription">Job Description</label>
+                <textarea name="jobDescription" id="jobDescription" type="text" class="w-100"
+                  placeholder="Description of the job..." maxlength="500"></textarea>
+              </div>
+              <!-- <div class="mb-3">
+                <label for="creatorId">creatorId</label>
+                <input id="creatorId" name="creatorId" type="">
+              </div>
+              <div class="mb-3">
+                <label for="id">id</label>
+                <input id="id" name="id" type="" >
+              </div> -->
+              <div class="text-end">
+                <button class="btn btn-outline-danger me-2" type="reset">
+                  Reset Form
+                </button>
+                <button class="btn btn-outline-dark" type="submit">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+        <div class="col-md-5">
+          <div class="p-2">
+            <img
+              src="https://images.unsplash.com/photo-1557754897-ca12c5049d83?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8am9ic3xlbnwwfDF8MHx8fDI%3D"
+              alt="Image of a desk with laptop and other work essentials" class="car-form-img rounded">
+
+          </div>
+        </div>
+      </div>
+      <div id="jobListings" class="row">
+        <!-- STUB Job Card -->
+        <!-- <div class="col-12">
+          <div class="row bg-light shadow car-border" style="border-color: rgba(6, 94, 134, 0.66);">
+            <div class="col-12">
+              <div class="d-flex flex-column justify-content-between h-100">
+                <div>
+                  <p class="fs-3 mb-1">Company</p>
+                  <small>Listed on 12/12/2020</small>
+                  <div class="pt-3">
+                    <p> Job Title</p>
+                    <p> Hours: 0</p>
+                    <p> Rate: $0</p>
+                  </div>
+                  <div class="d-flex mt-1 justify-content-between align-items-center">
+                    <p class="fs-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iste totam delectus
+                      neque exercitationem ipsum asperiores labore. Eum, rerum debitis.</p>
+                  </div>
+                  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit recusandae sed sint voluptate
+                    eligendi molestiae consequuntur quibusdam iusto perferendis ad!</p>
+                </div>
+                <div class="text-end mb-1">
+                  <button class="btn btn-outline-danger">
+                    Delete Job Listing
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- SECTION Houses Container Starts Here  -->
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="my-3">Houses</h>
+        </div>
+      </div>
+      <div class="row align-items-center mb-4">
+        <div class="col-md-7">
+          <div id="houseFormPlaceholder">
+            <p class="fs-1">Please log in to create a house listing</p>
+          </div>
+          <div id="houseForm" class="bg-light shadow rounded p-3 d-none">
+
+            <form onsubmit="app.houseController.createHouseListing()">
+              <div class="mb-3">
+                <label for="bedrooms">Bedrooms: 0</label>
+                <input id="bedrooms" name="bedrooms" type="number" required min="1" max="10" placeholder="0">
+              </div>
+              <div class="mb-3">
+                <label for="bathrooms">Bathrooms: 0</label>
+                <input id="bathrooms" name="bathrooms" type="number" required min="1" max="10" placeholder="0">
+              </div>
+              <div class="mb-3">
+                <label for="levels">Levels: 0</label>
+                <input id="levels" name="levels" type="number" required min="1" max="10" placeholder="0">
+              </div>
+              <div class="mb-3">
+                <label for="year">Year</label>
+                <input id="year" name="year" type="number" required min="1776" max="2025" placeholder="2025">
+              </div>
+              <div class="mb-3">
+                <label for="houseImgUrl">House Image URL</label>
+                <input id="houseImgUrl" name="houseImgUrl" type="url" required maxlength="500"
+                  placeholder="Image URL...">
+              </div>
+              <div class="mb-3">
+                <label for="price">Price</label>
+                <input id="price" name="price" type="number" required min="0" max="100000000" placeholder="$$$">
+              </div>
+              <div class="mb-3">
+                <label for="houseDescription">House Description</label>
+                <textarea name="houseDescription" id="houseDescription" type="text" class="w-100"
+                  placeholder="Description of the house..." maxlength="500"></textarea>
+              </div>
+              <!-- <div class="mb-3">
+                <label for="creatorId">creatorId</label>
+                <input id="creatorId" name="creatorId" type="">
+              </div>
+              <div class="mb-3">
+                <label for="id">id</label>
+                <input id="id" name="id" type="" >
+              </div> -->
+              <div class="text-end">
+                <button class="btn btn-outline-danger me-2" type="reset">
+                  Reset Form
+                </button>
+                <button class="btn btn-outline-dark" type="submit">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+        <div class="col-md-5">
+          <div class="p-2">
+            <img
+              src="https://images.unsplash.com/photo-1460493567047-d44949c477ae?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvdXNlcyUyMHdpdGglMjBwZW9wbGV8ZW58MHwxfDB8fHwy"
+              alt="A chick in front of a trappy, ghetto looking house" class="car-form-img rounded">
+
+          </div>
+        </div>
+      </div>
+      <div id="houseListings" class="row">
+        <!-- STUB House Card -->
+        <!-- <div class="col-12">
+          <div class="row bg-light shadow car-border" style="border-color: rgba(21, 197, 2, 0.66);">
+            <div class="col-md-4 ps-0">
+              <img
+                src="https://media.istockphoto.com/id/2155879397/photo/house-in-a-charming-neighborhood-with-stunning-sidewalk-landscaping.webp?a=1&b=1&s=612x612&w=0&k=20&c=LlqEpFyrJBmSZ8v3CshnYJo9X00p8Y7wGv3mIDNqpZ4="
+                alt="modern style house" class="img-fluid">
+            </div>
+            <div class="col-md-8">
+              <div class="d-flex flex-column justify-content-between h-100">
+                <div>
+                  <p class="fs-3 mb-1">2024 Modern Home</p>
+                  <small>Listed on 12/12/2020</small>
+                  <div class="pt-3">
+                    <p> Bedrooms: 0</p>
+                    <p> Bathrooms: 0</p>
+                    <p> Levels: 0</p>
+                  </div>
+                  <div class="d-flex mt-1 justify-content-between align-items-center">
+                    <p class="fs-3">$1000000</p>
+                  </div>
+                  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit recusandae sed sint voluptate
+                    eligendi molestiae consequuntur quibusdam iusto perferendis ad!</p>
+                </div>
+                <div class="text-end mb-1">
+                  <button class="btn btn-outline-danger">
+                    Delete House Listing
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- SECTION  Cars Container starts here  -->
 
     <div class="container">
       <div class="row">
