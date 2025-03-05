@@ -1,3 +1,4 @@
+import { AppState } from "../AppState.js"
 
 
 export class Houses {
@@ -13,6 +14,23 @@ export class Houses {
     this.id = data.id
   }
 
+  get deleteButton() {
+    const user = AppState.identity
+
+    if (user == null) {
+      return ''
+    }
+
+    if (this.creatorId != user.id) {
+      return ''
+    }
+
+    return `
+      <button onclick="app.housesController.deleteHouse('${this.id} ${this.creatorId}')" class="btn btn-outline-danger">
+          Delete House
+        </button>
+      `
+  }
 
   get card() {
     return `
@@ -20,24 +38,23 @@ export class Houses {
           <div class="row bg-light shadow car-border" style="border-color: rgba(21, 197, 2, 0.66);">
             <div class="col-md-4 ps-0">
               <img
-                src="https://media.istockphoto.com/id/2155879397/photo/house-in-a-charming-neighborhood-with-stunning-sidewalk-landscaping.webp?a=1&b=1&s=612x612&w=0&k=20&c=LlqEpFyrJBmSZ8v3CshnYJo9X00p8Y7wGv3mIDNqpZ4="
+                src="${this.imgUrl}"
                 alt="modern style house" class="img-fluid">
             </div>
             <div class="col-md-8">
               <div class="d-flex flex-column justify-content-between h-100">
                 <div>
-                  <p class="fs-3 mb-1">2024 Modern Home</p>
+                  <p class="fs-3 mb-1">${this.year}</p>
                   <small>Listed on 12/12/2020</small>
                   <div class="pt-3">
-                    <p> Bedrooms: 0</p>
-                    <p> Bathrooms: 0</p>
-                    <p> Levels: 0</p>
+                    <p> Bedrooms: ${this.bedrooms}</p>
+                    <p> Bathrooms: ${this.bathrooms}</p>
+                    <p> Levels: ${this.levels}</p>
                   </div>
                   <div class="d-flex mt-1 justify-content-between align-items-center">
-                    <p class="fs-3">$1000000</p>
+                    <p class="fs-3">$${this.price}</p>
                   </div>
-                  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit recusandae sed sint voluptate
-                    eligendi molestiae consequuntur quibusdam iusto perferendis ad!</p>
+                  <p>${this.description}</p>
                 </div>
                 <div class="text-end mb-1">
                   <button class="btn btn-outline-danger">

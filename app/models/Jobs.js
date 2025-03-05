@@ -1,3 +1,4 @@
+import { AppState } from "../AppState.js"
 
 export class Jobs {
   constructor(data) {
@@ -10,6 +11,23 @@ export class Jobs {
     this.id = data.id
   }
 
+  get deleteButton() {
+    const user = AppState.identity
+
+    if (user == null) {
+      return ''
+    }
+
+    if (this.creatorId != user.id) {
+      return ''
+    }
+
+    return `
+    <button onclick="app.jobsController.deleteJob('${this.id} ${this.creatorId}')" class="btn btn-outline-danger">
+        Delete Car
+      </button>
+    `
+  }
 
 
   get card() {
@@ -19,23 +37,21 @@ export class Jobs {
             <div class="col-12">
               <div class="d-flex flex-column justify-content-between h-100">
                 <div>
-                  <p class="fs-3 mb-1">Company</p>
-                  <small>Listed on 12/12/2020</small>
+                  <p class="fs-3 mb-1">${this.company}</p>
                   <div class="pt-3">
-                    <p> Job Title</p>
-                    <p> Hours: 0</p>
-                    <p> Rate: $0</p>
+                    <p>${this.jobTitle}</p>
+                    <p>${this.hours}: 0</p>
+                    <p>${this.rate}: $0</p>
                   </div>
                   <div class="d-flex mt-1 justify-content-between align-items-center">
-                    <p class="fs-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iste totam delectus
-                      neque exercitationem ipsum asperiores labore. Eum, rerum debitis.</p>
+                    <p class="fs-3">${this.description}</p>
                   </div>
                   <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit recusandae sed sint voluptate
                     eligendi molestiae consequuntur quibusdam iusto perferendis ad!</p>
                 </div>
                 <div class="text-end mb-1">
                   <button class="btn btn-outline-danger">
-                    Delete Job Listing
+                    ${this.deleteButton}
                   </button>
                 </div>
               </div>
